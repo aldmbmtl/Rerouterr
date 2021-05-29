@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  skiff:
+    image: aldmbmtl/skiff
+    ports:
+      - 8080:80
+    environment:
+      PLEX_SERVER: <PLEX_SERVER_URL>
+      PLEX_TOKEN: <PLEX_USER_TOKEN>
