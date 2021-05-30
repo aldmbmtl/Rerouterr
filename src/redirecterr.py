@@ -23,7 +23,7 @@ def template_test(path):
     """
     Basic render function
     """
-    with open("/config.yaml", "r") as config_file:
+    with open("/config/main.yaml", "r") as config_file:
         data = yaml.load(config_file.read(), Loader=yaml.FullLoader)
 
     config = {**DEFAULT, **data.get(path, {})}
