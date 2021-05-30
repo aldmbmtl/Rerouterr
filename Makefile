@@ -6,20 +6,25 @@ clean:
 
 install: clean
 	@virtualenv venv
-	for name in prod test dev ; do \
-  		venv/bin/pip install -r $(REQUIREMENTS)/$$name.txt --no-cache ; \
+	@venv/bin/pip -qq install -U pip
+	for name in prod dev ; do \
+  		venv/bin/pip -qq install -r $(REQUIREMENTS)/$$name.txt --no-cache ; \
   	done
 
 
 freeze:
-	@venv/bin/pip install pip-tools
-	for name in prod test dev ; do \
-			venv/bin/pip-compile $(REQUIREMENTS)/$$name.in -o $(REQUIREMENTS)/$$name.txt ; \
+	@venv/bin/pip -qq install pip-tools
+	for name in prod dev ; do \
+			venv/bin/pip-compile -qq $(REQUIREMENTS)/$$name.in -o $(REQUIREMENTS)/$$name.txt ; \
 	done
 	$(MAKE) install
 
 
 lint:
-	@venv/bin/isort skiff
-	@venv/bin/black skiff
-	@venv/bin/pylint skiff
+	@venv/bin/isort src
+	@venv/bin/black src
+	@venv/bin/pylint src
+
+
+up:
+	docker-compose up --build

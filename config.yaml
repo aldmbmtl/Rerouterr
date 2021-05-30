@@ -1,0 +1,8 @@
+requests:
+  template: rainbow
+  title: Requests
+  header: Verify Storage
+  message: Please make sure to check storage before making requests.
+  embed: https://window.hatfieldfx.com/d/-p0KGg6Gk/storage_preview?orgId=1&kiosk
+  redirect_to: https://requests.hatfieldfx.com
+  delay: 3

@@ -1,0 +1,107 @@
+<html>
+    {% block content %}
+    <head>
+        <title>{{header}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://bootswatch.com/5/darkly/bootstrap.min.css" rel="stylesheet" media="screen">
+        <style type="text/css">
+            html {
+              height:100%;
+            }
+
+            body {
+              margin:0;
+            }
+
+            .bg {
+              animation:slide 3s ease-in-out infinite alternate;
+              background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+              bottom:0;
+              left:-50%;
+              opacity:.5;
+              position:fixed;
+              right:-50%;
+              top:0;
+              z-index:-1;
+            }
+
+            .bg2 {
+              animation-direction:alternate-reverse;
+              animation-duration:4s;
+            }
+
+            .bg3 {
+              animation-duration:5s;
+            }
+
+            h1 {
+              font-family:monospace;
+            }
+
+            @keyframes slide {
+              0% {
+                transform:translateX(-25%);
+              }
+              100% {
+                transform:translateX(25%);
+              }
+            }
+            .container {
+                max-width: 80%;
+                padding-top: 5%;
+            }
+
+            .align-center {
+              text-align: center;
+            }
+
+            .footer {
+              margin-top: 10%;
+            }
+
+            .header {
+              margin-bottom: 2%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <div class="content container align-center">
+            <div class="header">
+                <h1>
+                    {{header}}
+                </h1>
+                <h5>
+                    {{message}}
+                </h5>
+            </div>
+            {% if embed %}
+            <iframe
+                src="{{embed}}"
+                frameborder="0"
+                style="overflow:hidden;height:50%;width:100%"
+                height="50%"
+                width="100%"
+            ></iframe>
+            {% endif %}
+            <div class="footer">
+                {% if delay %}
+                    <meta http-equiv="refresh" content="{{delay}};url={{redirect_to}}"/>
+                    <h6>
+                        Please wait...
+                    </h6>
+                {% else %}
+                    <button
+                        onclick="location.href = '{{redirect_to}}';"
+                        class="btn btn-primary"
+                    >
+                        Continue
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+    {% endblock %}
+</html>
