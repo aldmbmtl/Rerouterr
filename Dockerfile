@@ -8,7 +8,8 @@ COPY requirements .
 RUN pip -qq install -r prod.txt \
     && rm -rf *
 
-COPY src/* /app/
+COPY src/redirecterr.py /app/redirecterr.py
+COPY src/templates /app/templates
 
 VOLUME /config
 

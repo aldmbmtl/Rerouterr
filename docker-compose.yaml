@@ -9,5 +9,4 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./src:/app
       - ./config.yaml:/config/main.yaml
